@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseForm Fitness</title>
+  <meta name="description" content="A clean fitness coaching demo landing page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --bg:#f6f5f1; --surface:#ffffff; --surface-2:#eeece6; --text:#171717; --muted:#66625c;
+      --primary:#0f766e; --primary-2:#134e4a; --line:rgba(23,23,23,.12); --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:22px;
+    }
+    [data-theme="dark"] {
+      --bg:#111311; --surface:#171a18; --surface-2:#202421; --text:#f4f3ef; --muted:#b4b0a8;
+      --primary:#43b7ad; --primary-2:#83d5cc; --line:rgba(255,255,255,.12); --shadow:0 10px 30px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit} img{max-width:100%;display:block} .container{width:min(1120px,calc(100% - 32px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 86%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}.brand{display:flex;gap:12px;align-items:center;font-weight:800}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;color:#fff;font-weight:800}
+    .navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--text)}
+    .toggle{border:1px solid var(--line);background:var(--surface);padding:10px 12px;border-radius:999px;cursor:pointer}
+    .hero{padding:72px 0 32px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    .eyebrow{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px;color:var(--muted)}
+    h1{font-family:"Instrument Serif",serif;font-size:clamp(44px,7vw,86px);line-height:.95;letter-spacing:-.03em;margin:18px 0 18px}
+    .sub{font-size:18px;color:var(--muted);max-width:58ch}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:999px;font-weight:700;border:1px solid transparent;min-height:48px}
+    .btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{filter:brightness(1.05)} .btn-secondary{background:var(--surface);border-color:var(--line)}
+    .hero-card{background:var(--surface);border:1px solid var(--line);border-radius:32px;padding:18px;box-shadow:var(--shadow)}
+    .hero-visual{aspect-ratio:4/5;border-radius:24px;background:
+      radial-gradient(circle at top left, rgba(15,118,110,.18), transparent 28%),
+      linear-gradient(180deg,#d9eee8 0%, #b8ddd6 100%);
+      position:relative;overflow:hidden}
+    [data-theme="dark"] .hero-visual{background:radial-gradient(circle at top left, rgba(67,183,173,.16), transparent 28%),linear-gradient(180deg,#1b2c29 0%, #17201f 100%)}
+    .metric{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow)}
+    .metric strong{display:block;font-size:22px}.m1{top:18px;left:18px}.m2{bottom:18px;right:18px}.m3{left:18px;bottom:92px}
+    .section{padding:26px 0 72px}.section h2{font-size:clamp(28px,4vw,44px);margin:0 0 8px}.section p.lead{color:var(--muted);margin:0 0 22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:10px 0 8px;font-size:20px}.muted{color:var(--muted)} .icon{font-size:24px}
+    .program{display:grid;grid-template-columns:1fr 1fr;gap:18px}.program .card ul{padding-left:18px;margin:12px 0 0}
+    .cta{padding:18px;border-radius:28px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:var(--shadow)}
+    footer{padding:28px 0 48px;color:var(--muted);font-size:14px}
+    @media (max-width:900px){.hero-grid,.program,.grid-3,.cta{grid-template-columns:1fr;display:grid}.navlinks{display:none} h1{max-width:10ch}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="PulseForm home">
+        <div class="logo">PF</div>
+        <span>PulseForm</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#plans">Plans</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="toggle" data-theme-toggle aria-label="Switch theme">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">12-week online fitness coaching demo</span>
+          <h1>Build strength without building your life around the gym.</h1>
+          <p class="sub">A real-looking landing page demo for a modern fitness coach. Clean design, mobile friendly, and simple enough to deploy on Vercel in a few minutes.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Book a call</a>
+            <a class="btn btn-secondary" href="#plans">See plans</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-visual" aria-label="Fitness dashboard style visual">
+            <div class="metric m1"><span class="muted">Avg adherence</span><strong>91%</strong></div>
+            <div class="metric m3"><span class="muted">Weekly sessions</span><strong>4x</strong></div>
+            <div class="metric m2"><span class="muted">Client energy score</span><strong>+28%</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <h2>Designed for people who need a system, not hype.</h2>
+        <p class="lead">This section makes the site feel real and gives you enough content to test whether your Vercel deployment is working properly.</p>
+        <div class="grid-3">
+          <article class="card"><div class="icon">01</div><h3>Training plan</h3><p class="muted">Simple weekly progression with strength, mobility, and recovery built in.</p></article>
+          <article class="card"><div class="icon">02</div><h3>Nutrition guidance</h3><p class="muted">Practical meal structure focused on consistency instead of extreme dieting.</p></article>
+          <article class="card"><div class="icon">03</div><h3>Check-ins</h3><p class="muted">Weekly reviews to adjust workload, habits, and recovery before progress stalls.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="plans">
+      <div class="container program">
+        <article class="card">
+          <h3>Starter plan</h3>
+          <p class="muted">Good for testing your first Vercel deployment.</p>
+          <ul>
+            <li>3 workouts per week</li>
+            <li>Habit tracker</li>
+            <li>Email support</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Performance plan</h3>
+          <p class="muted">For people who want stronger visuals and more credibility on the page.</p>
+          <ul>
+            <li>4 to 5 workouts per week</li>
+            <li>Monthly progress reviews</li>
+            <li>Recovery and mobility add-on</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container cta">
+        <div>
+          <h2 style="margin:0 0 6px">Ready to test your domain?</h2>
+          <p class="muted" style="margin:0">Deploy this folder as a new Vercel project. If it opens, your Vercel setup is fine.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:hello@pulseform.demo">Launch demo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">PulseForm demo site. Built as a static HTML deployment test.</div>
+  </footer>
+
+  <script>
+    (function(){
+      const btn=document.querySelector('[data-theme-toggle]');
+      const root=document.documentElement;
+      let theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+      root.setAttribute('data-theme',theme);
+      btn.addEventListener('click',()=>{
+        theme=theme==='dark'?'light':'dark';
+        root.setAttribute('data-theme',theme);
+      });
+    })();
+  </script>
+</body>
+</html>
